@@ -67,10 +67,27 @@ body { background: var(--paper); }
 .location-hours strong { font-size: 14px; }
 .footer-note, .copyright, .footer-links { font-size: 9px; }
 .mobile-booking { font-size: 12px; }
+.barber-meta > div { min-width: 0; }
+.barber-bio { display: block; max-width: 260px; margin-top: 9px; color: var(--muted); font-size: 10px; line-height: 1.65; }
+.gallery { background: #dedfd3; border-block: 1px solid #d0d2c4; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.gallery-item { position: relative; min-width: 0; margin: 0; overflow: hidden; aspect-ratio: 1.25; background: #b6ae9c; }
+.gallery-item img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .55s ease; }
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item::after { position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, #161813a6); content: ""; pointer-events: none; }
+.gallery-item figcaption { position: absolute; z-index: 1; right: 15px; bottom: 14px; left: 15px; color: #fffaf0; font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+.gallery-item figcaption span { margin-right: 8px; color: #f29877; }
+.gallery-cta { display: inline-flex; align-items: center; gap: 18px; margin-top: 27px; padding-bottom: 5px; border-bottom: 1px solid #aaa79f; font-size: 12px; font-weight: 700; }
+.gallery-cta span { color: var(--orange); }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+.contact-action { display: inline-flex; min-height: 44px; align-items: center; justify-content: space-between; gap: 22px; padding: 0 14px; border: 1px solid var(--ink); font-size: 11px; font-weight: 700; transition: background .2s, color .2s; }
+.contact-action span { color: var(--orange); }
+.contact-action:hover { background: var(--ink); color: var(--paper); }
 
 @media (max-width: 900px) {
   .service-row h3 { font-size: 13px; }
   .button { font-size: 11px; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 }
 
 @media (max-width: 650px) {
@@ -102,15 +119,32 @@ body { background: var(--paper); }
   .service-row p { font-size: 9px; line-height: 1.55; }
   .service-row > strong { font-size: 11px; }
   .service-num { font-size: 10px; }
-  .barber-meta h3 { font-size: 14px; }
-  .barber-meta p { font-size: 9px; line-height: 1.45; }
-  .barber-card:last-child { display: block; grid-column: 1 / -1; width: calc(50% - 7px); justify-self: center; }
+  .team-grid { grid-template-columns: 1fr; gap: 18px; }
+  .barber-card { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1fr); align-items: center; gap: 16px; }
+  .barber-card:last-child { display: grid; grid-column: auto; width: auto; justify-self: stretch; }
+  .barber-image { height: auto; min-height: 0; max-height: none; aspect-ratio: 1.12; }
+  .barber-meta { display: block; padding-top: 0; }
+  .barber-meta h3 { font-size: 16px; }
+  .barber-meta p { font-size: 10px; line-height: 1.5; }
+  .barber-bio { font-size: 10px; }
+  .barber-meta > a { width: 38px; height: 38px; margin-top: 12px; }
   .review-text { font-size: 15px; line-height: 1.7; }
   .review-card { box-shadow: 7px 7px 0 #20241f0a; }
   .booking h2 { font-size: clamp(64px, 19vw, 74px); letter-spacing: -5.8px; }
   .booking > p { font-size: 12px; }
   .booking-actions .button { min-height: 52px; font-size: 12px; }
   .location-copy > p { max-width: 300px; font-size: 12px; }
+  .gallery { padding-inline: 22px; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .gallery-item figcaption { right: 10px; bottom: 10px; left: 10px; font-size: 8px; letter-spacing: .7px; }
+  .gallery-cta { min-height: 44px; font-size: 12px; }
+  .contact-actions { gap: 9px; }
+  .contact-action { min-height: 46px; font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item { aspect-ratio: 1.35; }
 }
 
 @media (max-width: 380px) {
@@ -132,13 +166,14 @@ body { background: var(--paper); }
   .service-row h3 { font-size: 12px; }
   .service-row > strong { font-size: 10px; }
   .team-grid { gap: 24px 10px; }
-  .barber-card:last-child { width: calc(50% - 5px); }
+  .barber-card:last-child { width: auto; }
   .barber-meta > a { width: 27px; height: 27px; flex: none; }
   .review-section { padding-inline: 17px; }
   .review-card { gap: 9px; padding-inline: 16px; }
   .booking { padding-inline: 17px; }
   .booking h2 { font-size: 64px; letter-spacing: -5.5px; }
   .location-copy { padding-inline: 21px; }
+  .map-label { left: calc(50% + 35px); right: 12px; top: 39%; }
   .footer { padding-inline: 16px; }
   .footer-links { gap: 8px; font-size: 8px; }
 }
